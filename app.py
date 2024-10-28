@@ -8,7 +8,7 @@ def home():
     return render_template('index.html')
 
 
-# API at /api/v1/analysis/ 
+# API at /api/v1/analysis/
 @app.route("/api/v1/analysis/", methods=['GET'])
 def analysis():
     # Try to get the URI from the JSON
@@ -17,15 +17,15 @@ def analysis():
         image_uri = get_json['uri']
     except:
         return jsonify({'error': 'Missing URI in JSON'}), 400
-    
+
     # Try to get the text from the image
     try:
         res = read_image(image_uri)
-        
+
         response_data = {
             "text": res
         }
-    
+
         return jsonify(response_data), 200
     except:
         return jsonify({'error': 'Error in processing'}), 500

@@ -52,3 +52,18 @@ def read_image(uri):
     else:
         print("Final status:", result.status)
         return "error"
+
+
+def test_ocr_api():
+    # Sample image URL to test the OCR API functionality
+    sample_image_url = "https://jeroen.github.io/images/testocr.png"
+
+    # Calling the OCR API
+    try:
+        ocr_result = client.recognize_printed_text_in_stream(sample_image_url)
+        print("OCR API call successful. Result:")
+        print(ocr_result)
+        return ocr_result
+    except Exception as e:
+        print("Error calling OCR API:", e)
+        return None
